@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, request, render_template, redirect, url_for, send_file, session
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import sqlite3
 import random
 import os
@@ -15,14 +16,19 @@ import re
 from datetime import datetime
 
 
+
+
 logging.basicConfig(filename='app.log', level=logging.DEBUG, 
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 app = Flask(__name__, template_folder='templates')
 request_count = 0
+
 app.secret_key = secrets.token_hex(16)  # Sicherer Schlüssel für die Sessions
+
 active_connections = 0  # Initialisierung der globalen Zählung
+
 print("Templates-Verzeichnis:", os.path.abspath("templates"))
 logging.debug("Debug message")
 logging.info("Info message")
@@ -30,8 +36,10 @@ logging.warning("Warning message")
 logging.error("Error message")
 logging.critical("Critical message")
 # überprüft Pfade
+
 if os.path.exists("templates/index.html") and os.path.exists("templates/error.html") and os.path.exists("templates/confirmation.html"):
     print("Template Pfade 'index' und 'error' vorhanden = TRUE")
+
 
 #Zieht aktuelle Zeit für Insert in db
 anmeldedatum = datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f')
@@ -46,6 +54,7 @@ def validate_name(name):
     if re.match(r"^[a-zA-ZäöüßÄÖÜ\s-]+$", name):
         return True
     return False
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -77,7 +86,7 @@ class bcolors:
     UNDERLINE = '\033[4m'
     ORANGE = '\033[38;5;214m'
 random_charakters_bar = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM1234567890!@#$%^&()-_=+[].,"
-os.makedirs('static/tickets', exist_ok=True)
+os.makedirs('static/barcodes', exist_ok=True)
 def count_registrations_with_ip():
     # Verbindung zur Datenbank herstellen
     conn = sqlite3.connect('datenbank.db')
@@ -118,16 +127,17 @@ def generate_user_id(registration_number, age_user, jahrgang):
     random_suffix =''.join(random.choice(random_charakters_bar) for _ in range(10))
     #bei range(10) gibt es 53,783,827,851,266,404,096 verschiedene kombinationen, für dekodierung über 3 Jahre
     return personal_data + random_suffix
-def add_user_to_db(vorname, nachname, age_user, jahrgang, identifier, ip_address):
+def add_user_to_db(vorname, nachname, age_user, jahrgang, identifier, ip_address, category="Gast"):
+    logging.info(f"Adding user with category: {category}")
     conn = sqlite3.connect('datenbank.db')
     c = conn.cursor()
     c.execute('''
         INSERT INTO benutzer (
             vorname, nachname, age_user, jahrgang, identifier, anmeldedatum,
-            ip_address)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ip_address, category)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     ''', (vorname, nachname, age_user, jahrgang, identifier, datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-          ip_address))
+          ip_address, category))
     conn.commit()
     conn.close()
 def generate_barcode(identifier):
@@ -332,8 +342,8 @@ def submit():
             
             # Neuen Benutzer erstellen
             identifier = generate_user_id(registration_number, int(age_user), int(jahrgang))
-            c.execute("INSERT INTO benutzer (vorname, nachname, age_user, jahrgang, identifier, ip_address, anmeldedatum) VALUES (?, ?, ?, ?, ?, ?, ?)", 
-                (vorname, nachname, int(age_user), int(jahrgang), identifier, ip_address, current_timestamp))
+            c.execute("INSERT INTO benutzer (vorname, nachname, age_user, jahrgang, identifier, ip_address, anmeldedatum, category, last_scantime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                                (vorname, nachname, int(age_user), int(jahrgang), identifier, ip_address, current_timestamp, "Gast", current_timestamp),)
             
             # Neu erstellten Benutzer abrufen
             c.execute("SELECT * FROM benutzer WHERE identifier = ?", (identifier,))
@@ -356,6 +366,7 @@ def submit():
         print(f"Fehler im submit-Handler: {str(e)}")
         return render_template("error.html", error_message="Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es später erneut."), 500
     
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8191, debug=True)
     if not os.path.exists('static'):
