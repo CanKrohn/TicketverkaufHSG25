@@ -361,7 +361,7 @@ def submit():
     
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8191, debug=True)
+    app.run(host="0.0.0.0", port=8191, debug=False)
     if not os.path.exists('static'):
         os.makedirs('static')
     if not os.path.exists('static/barcodes'):

@@ -243,4 +243,4 @@ def get_age_statistics():
     
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8292, debug=True)
+    app.run(host="0.0.0.0", port=8292, debug=False)
