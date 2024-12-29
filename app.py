@@ -14,6 +14,8 @@ import threading
 import logging
 import re
 from datetime import datetime
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 
 
@@ -25,7 +27,18 @@ logging.basicConfig(filename='app.log', level=logging.DEBUG,
 app = Flask(__name__, template_folder='templates')
 request_count = 0
 
-app.secret_key = secrets.token_hex(16)  # Sicherer Schlüssel für die Sessions
+app.secret_key = os.environ.get('SECRET_KEY', secrets.token_hex(16))  # Sicherer Schlüssel für die Sessions
+
+app.config.update(
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SECURE=True,
+)
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["20 per day", "10 per hour"]
+)
 
 active_connections = 0  # Initialisierung der globalen Zählung
 
@@ -48,12 +61,11 @@ current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
 
 def is_valid_name(name):
-    return bool(re.match(r'^[A-Za-zÄäÖöÜüß-]+$', name))
-def validate_name(name):
-    # Regex für erlaubte Zeichen
+        # Regex für erlaubte Zeichen
     if re.match(r"^[a-zA-ZäöüßÄÖÜ\s-]+$", name):
         return True
     return False
+
 
 
 @app.errorhandler(404)
@@ -299,7 +311,7 @@ def get_barcode(identifier):
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    count_registrations_with_ip
+    count_registrations_with_ip()
     try:
         # Formulardaten abrufen und validieren
         vorname = request.form.get('vorname')
@@ -360,7 +372,6 @@ def submit():
     except Exception as e:
         print(f"Fehler im submit-Handler: {str(e)}")
         return render_template("error.html", error_message="Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es später erneut."), 500
-    
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8191, debug=False)
