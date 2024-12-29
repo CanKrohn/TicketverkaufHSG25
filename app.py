@@ -269,8 +269,10 @@ def restart():
         conn.close()
         return redirect(url_for('index'))
     except Exception as e:
-        print(f"{bcolors.WARNING}Fehler beim Neustarten: {str(e)}{bcolors.ENDC}")
-        return f"Ein Fehler ist aufgetreten: {str(e)}", 500
+        # Protokolliere den Fehler auf dem Server
+        logging.error(f"Fehler beim Neustarten: {str(e)}", exc_info=True)
+        # Gebe eine generische Fehlermeldung zurück
+        return "Ein interner Fehler ist aufgetreten. Bitte versuche es später erneut.", 500
     
 #blockiert Zugriff auf Barcode Dateien 
 @app.route('/barcodes/<identifier>.png')
