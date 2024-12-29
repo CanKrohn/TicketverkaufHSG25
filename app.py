@@ -217,18 +217,11 @@ def init_db():
     ''')
     
     c.execute('''
-        CREATE TRIGGER IF NOT EXISTS after_insert_on_PayState_scanned
-        AFTER INSERT ON PayState_scanned
-        FOR EACH ROW
-        BEGIN
-            UPDATE PayState_scanned
-            SET
-                vorname = (SELECT vorname FROM Benutzer WHERE Benutzer.identifier = NEW.identifier),
-                nachname = (SELECT nachname FROM Benutzer WHERE Benutzer.identifier = NEW.identifier),
-                category = (SELECT category FROM Benutzer WHERE Benutzer.identifier = NEW.identifier)
-            WHERE identifier = NEW.identifier;
-        END;
-''')
+        CREATE TABLE IF NOT EXISTS daily_count (
+            date TEXT PRIMARY KEY,
+            initial_count INTEGER
+        );
+        ''')
     conn.commit()
     conn.close()
     if not os.path.exists('static/barcodes'):

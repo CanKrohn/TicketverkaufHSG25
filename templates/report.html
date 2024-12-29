@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>System Report</title>
+	<style>
+		/* Allgemeine Styles */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f4f7f6;
+			line-height: 1.6;
+		}
+
+		/* Menüleiste */
+		.navbar {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			background-color: #333;
+			color: white;
+			padding: 10px;
+		}
+
+		.navbar h1 {
+			font-size: 18px;
+			margin: 0;
+		}
+
+		.navbar ul {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin: 0;
+			padding: 0;
+		}
+
+		.navbar ul li a {
+			display: block;
+			padding: 8px 12px;
+			color: white;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		.navbar ul li a:hover, .navbar ul li a.active {
+			background-color: #555;
+		}
+
+		.mobile-menu {
+			position: absolute;
+			top: 50px;
+			right: 0;
+			background-color: #333;
+			width: 200px;
+			transform: translateX(100%);
+			transition: transform 0.3s ease-in-out;
+		}
+
+		.mobile-menu.show {
+			transform: translateX(0);
+		}
+
+		.mobile-menu a {
+			display: block;
+			padding: 10px 15px;
+			color: white;
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		.mobile-menu a:hover {
+			background-color: #555;
+		}
+
+		/* Hamburger Menü */
+		.hamburger {
+			display: none; /* Standardmäßig ausblenden */
+			flex-direction: column;
+			gap: 5px;
+			cursor: pointer;
+		}
+
+		.hamburger div {
+			width: 25px;
+			height: 3px;
+			background-color: white;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+		}
+
+		.hamburger.open div:nth-child(1) {
+			transform: rotate(45deg) translateY(8px);
+		}
+
+		.hamburger.open div:nth-child(2) {
+			opacity: 0;
+		}
+
+		.hamburger.open div:nth-child(3) {
+			transform: rotate(-45deg) translateY(-8px);
+		}
+
+		/* Hauptcontainer */
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 20px;
+		}
+
+		.card {
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			text-align: center;
+		}
+
+		.card h2 {
+			font-size: 18px;
+			color: #333;
+			margin-bottom: 10px;
+		}
+		.card h3 {
+			font-size: 14px;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		.card p {
+			font-size: 24px;
+			color: #4CAF50;
+			margin: 0;
+		}
+
+		/* Stil für den Refresh-Button */
+		#refresh-table {
+			display: inline-block;
+			background-color: #4CAF50;
+			color: white;
+			font-size: 18px;
+			font-weight: bold;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 8px;
+			cursor: pointer;
+			text-align: center;
+			transition: background-color 0.3s, transform 0.2s;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+		
+		#refresh-table:hover {
+			background-color: #45a049;
+			transform: translateY(-2px);
+		}
+		
+		#refresh-table:active {
+			background-color: #3e8e41;
+			transform: translateY(0);
+		}
+		
+		/* Tabelle */
+		#table-container {
+			overflow-x: auto;
+			width: 100%;
+		}
+		
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		table th, table td {
+			text-align: left;
+			padding: 10px;
+			font-size: 14px;
+		}
+
+		table th {
+			background-color: #333;
+			color: white;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		/* Footer */
+		footer {
+			text-align: center;
+			padding: 10px;
+			background-color: #333;
+			color: white;
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+		}
+
+		/* Responsives Styling */
+		@media (max-width: 768px) {
+			.navbar ul {
+				display: none; /* Verstecke die Desktop-Navigation */
+			}
+			
+			.hamburger {
+				display: flex; /* Zeige den Hamburger auf mobilen Geräten */
+			}
+			
+			.navbar ul li a {
+				text-align: center;
+				padding: 10px;
+			}
+			
+			h1, h2 {
+				font-size: 18px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.card {
+				padding: 10px;
+			}
+			
+			table th, table td {
+				font-size: 12px;
+			}
+			
+			#refresh-table {
+				font-size: 16px;
+				padding: 10px 15px;
+			}
+		}
+		.highlight {
+			color: green;
+			font-weight: bold;  /* Optional: fett für bessere Sichtbarkeit */
+		}
+		#team-popup {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			display: none;
+			justify-content: center;
+			align-items: center;
+		}
+		#team-popup .popup-content {
+			background-color: white;
+			padding: 20px;
+			border-radius: 8px;
+			max-width: 400px;
+			width: 100%;
+		}
+		#team-popup.hidden {
+			display: none;
+		}
+		
+		/* Styling für den "Team anzeigen"-Button */
+		#view-team {
+			background-color: #4CAF50; /* Grüner Hintergrund */
+			color: white; /* Weißer Text */
+			font-size: 16px; /* Textgröße */
+			font-weight: bold; /* Fetter Text */
+			padding: 10px 20px; /* Innenabstand */
+			border: none; /* Keine Randlinie */
+			border-radius: 5px; /* Abgerundete Ecken */
+			cursor: pointer; /* Zeigeranzeige beim Hover */
+			transition: background-color 0.3s, transform 0.2s; /* Sanfte Übergänge für Hintergrund und Bewegung */
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Schatten für Tiefe */
+		}
+		
+		/* Hover-Effekt: Hintergrundfarbe ändern */
+		#view-team:hover {
+			background-color: #45a049; /* Etwas dunkleres Grün */
+			transform: translateY(-2px); /* Leichte Bewegung nach oben */
+		}
+		
+		/* Aktivierungseffekt: Button wird etwas dunkler */
+		#view-team:active {
+			background-color: #3e8e41; /* Noch dunkleres Grün */
+			transform: translateY(0); /* Rückkehr zur Ausgangsposition */
+		}
+		
+	</style>
+</head>
+<body>
+
+	<!-- Menüleiste -->
+	<div class="navbar">
+		<h1>System Report</h1>
+		<div class="hamburger" id="hamburger">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<ul id="desktop-menu">
+			<li><a href="#" data-page="dashboard" class="active">Dashboard</a></li>
+			<li><a href="#" data-page="system">System-Report</a></li>
+			<li><a href="#" data-page="current">Aktuell</a></li>
+			<li><a href="#" data-page="table">Tabelle</a></li>
+			<li><a href="#" data-page="settings">Einstellungen</a></li>
+		</ul>
+	</div>
+	
+	<!-- Mobiles Menü -->
+	<div class="mobile-menu" id="mobile-menu">
+		<a href="#" data-page="dashboard" class="active">Dashboard</a>
+		<a href="#" data-page="system">System-Report</a>
+		<a href="#" data-page="current">Aktuell</a>
+		<a href="#" data-page="table">Tabelle</a>
+		<a href="#" data-page="settings">Einstellungen</a>
+	</div>
+	
+	<!-- Hauptinhalt -->
+	<div id="table" class="section hidden">
+		<h1>Datenbank-Tabelle</h1>
+		<button id="refresh-table">Tabelle aktualisieren</button>
+		<div id="table-container"></div>
+	</div>
+	<div id="system" class="section hidden">
+		<h1>System Report</h1>
+		<p>Hier kommen die detaillierten Berichte.</p>
+		<div class="grid">
+			<div class="card">
+				<h2>Flask Server Status</h2>
+				<p>CPU Usage: {{ flask_server_status.cpu_usage }}%</p>
+				<p>Memory Used: {{ flask_server_status.memory_used }} MB</p>
+				<p>Disk Usage: {{ flask_server_status.disk_used }}%</p>
+			</div>
+			<div class="card">
+				<h2>Gesamtes System Status</h2>
+				<p>CPU Usage: {{ system_status.cpu_usage }}%</p>
+				<p>Memory Used: {{ system_status.memory_used }}%</p>
+				<p>Disk Usage: {{ system_status.disk_used }}%</p>
+			</div>
+		</div>
+		
+		<h2>Letzte Fehlerprotokolle</h2>
+		<div class="card">
+			<pre>{{ latest_logs }}</pre>
+		</div>
+	</div>
+	
+	<div id="current" class="section hidden">
+		<canvas id="age-chart"></canvas>
+	</div>
+
+	<div class="container">
+		<div id="dashboard" class="section">
+			<h1>Dashboard</h1>
+			<div class="grid">
+				<div class="card">
+					<h2>Bezahlte Tickets</h2>
+					<p>{{ total_paid }}</p>
+				</div>
+				<div class="card">
+					<h2>Anmeldungen</h2>
+<!--				<h3>Heute: <span class="highlight">{{ total_users }}</span></h3> 		-->
+					<h3>Gesamt: <span class="highlight">{{ total_users }}</span></h3>
+					<h3>Gast: <span class="highlight">{{ total_guests }}</span></h3>
+					<h3>Davon gültig: <span class="highlight">{{ total_valid_users }}</span></h3>
+				</div>
+
+				<div class="card">
+					<h2> Seitenaufrufe</h2>
+					<h3>Gesamt: <span class="highlight">{{ total_visits }}</span></h3>
+					<h3>Heute: <span class="highlight">{{ visits_today }}</span></h3>
+				</div>
+				<div class="card">
+					<h3>Team <span class="highlight">{{ team_member_count }}</span></h3>
+					<button id="view-team">Team anzeigen</button>
+				</div>
+				<div class="card" id="age-statistics">
+					<h2>Benutzer Altersverteilung</h2>
+					
+				</div>
+				<!-- Popup (Modal) -->
+				<div id="team-popup" class="hidden">
+					<div class="popup-content">
+						<h2>Team Mitglieder</h2>
+						<ul id="team-list"></ul>
+						<button id="close-popup">Schließen</button>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	
+		
+	</div>
+	
+	<!-- Footer -->
+	<footer>
+		© 2024 Dein Unternehmen - System Report
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script> src="/Users/can/Desktop/Ticketverkauf/chart.js"</script>
+	<script>
+		const ctx = document.getElementById('myChart');
+		
+		new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+		document.querySelectorAll('.navbar ul li a, .mobile-menu a').forEach(link => {
+			link.addEventListener('click', function(e) {
+				e.preventDefault();
+				
+				// Alle Abschnitte verstecken
+				document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+				
+				// Alle Links deaktivieren
+				document.querySelectorAll('.navbar ul li a, .mobile-menu a').forEach(link => link.classList.remove('active'));
+				
+				// Aktiven Link und Abschnitt anzeigen
+				const page = this.getAttribute('data-page');
+				document.getElementById(page).classList.remove('hidden');
+				this.classList.add('active');
+				
+				// Mobiles Menü schließen
+				if (mobileMenu.classList.contains('show')) {
+					mobileMenu.classList.remove('show');
+				}
+			});
+		});
+		
+		function loadTable() {
+			const container = document.getElementById('table-container');
+			fetch('/table')
+			.then(response => response.json())
+			.then(data => {
+				if (data.error) {
+					container.innerHTML = `<p style="color: red;">${data.error}</p>`;
+				} else {
+					const { columns, entries } = data;
+					let table = '<table border="1"><thead><tr>';
+					columns.forEach(column => table += `<th>${column}</th>`);
+					table += '</tr></thead><tbody>';
+					entries.forEach(entry => {
+						table += '<tr>';
+						entry.forEach(cell => table += `<td>${cell}</td>`);
+						table += '</tr>';
+					});
+					table += '</tbody></table>';
+					container.innerHTML = table;
+				}
+			})
+			.catch(error => {
+				container.innerHTML = '<p style="color: red;">Fehler beim Laden der Tabelle.</p>';
+			});
+		}
+		
+		document.getElementById('refresh-table').addEventListener('click', loadTable);
+		
+		// Hamburger-Menü-Logik
+		const hamburger = document.getElementById('hamburger');
+		const mobileMenu = document.getElementById('mobile-menu');
+		
+		hamburger.addEventListener('click', () => {
+			mobileMenu.classList.toggle('show');
+			hamburger.classList.toggle('open');
+		});
+		
+		// Event-Listener für den Button
+		document.getElementById('view-team').addEventListener('click', function() {
+			fetch('/team')
+			.then(response => response.json())
+			.then(data => {
+				if (data.team_members) {
+					const teamList = document.getElementById('team-list');
+					teamList.innerHTML = ''; // Liste leeren
+					data.team_members.forEach(member => {
+						const li = document.createElement('li');
+						li.textContent = `${member[0]} ${member[1]}, Alter: ${member[2]}`;
+						teamList.appendChild(li);
+					});
+					document.getElementById('team-popup').classList.remove('hidden');
+				} else {
+					alert('Fehler beim Laden der Team-Mitglieder');
+				}
+			});
+		});
+		
+		// Event-Listener für das Schließen des Popups
+		document.getElementById('close-popup').addEventListener('click', function() {
+			document.getElementById('team-popup').classList.add('hidden');
+		});
+		Chart.defaults.interaction.mode = 'nearest';
+		
+		// Interaction mode is set to nearest because it was not overridden here
+		const chartInteractionModeNearest = new Chart(ctx, {
+			type: 'line',
+			data: data
+		});
+		
+		// This chart would have the interaction mode that was passed in
+		const chartDifferentInteractionMode = new Chart(ctx, {
+			type: 'line',
+			data: data,
+			options: {
+				interaction: {
+					// Overrides the global setting
+					mode: 'index'
+				}
+			}
+		});
+	</script>
+</body>
+</html>
