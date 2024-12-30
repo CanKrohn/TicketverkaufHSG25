@@ -16,6 +16,7 @@ import re
 from datetime import datetime
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from redis import Redis
 
 
 
@@ -34,9 +35,12 @@ app.config.update(
     SESSION_COOKIE_SECURE=True,
 )
 
+# Configure Redis as the storage backend
+redis_client = Redis(host='0.0.0.0', port=8191)
 limiter = Limiter(
     get_remote_address,
     app=app,
+    storage_uri="redis://0.0.0.0:8191",
     default_limits=["20 per day", "10 per hour"]
 )
 
