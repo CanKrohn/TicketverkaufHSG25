@@ -70,7 +70,15 @@ def is_valid_name(name):
         return True
     return False
 
-
+@app.before_request
+def before_request():
+    if 'active_connections' not in session:
+        session['active_connections'] = 0
+        
+@app.after_request
+def after_request(response):
+    session['active_connections'] -= 1
+    return response
 
 @app.errorhandler(404)
 def page_not_found(e):
