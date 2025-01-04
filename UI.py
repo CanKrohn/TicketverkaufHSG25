@@ -4,6 +4,8 @@ import sqlite3
 from datetime import datetime
 from PIL import Image, ImageTk  # Pillow importieren
 import subprocess
+import os
+import sys
 
 
 conn = sqlite3.connect('datenbank.db')
@@ -27,6 +29,19 @@ redo_stack = []    # Stapel für rückgängig gemachte Aktionen
 
 # Globale Variable für den Verbindungsstatus
 db_connected = False  # Anfangs keine Verbindung
+
+def load_data(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            data = file.read()
+        return data
+    except FileNotFoundError:
+        return "File not found."
+    
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 
 # Funktion für die Verbindung zur Datenbank
 def bounce_icon(icon_name, steps=5, interval=50):

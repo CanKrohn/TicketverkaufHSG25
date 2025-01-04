@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestätigung</title>
+    <title>Bestätigung </title>
     <script type="text/javascript">
         // Funktion, um das Pop-up anzuzeigen
         function showPopup() {
@@ -195,7 +195,7 @@
         <p>Deine Ticket-Nummer: {{ identifier }}</p>
         <h4>Dein Ticket:</h4>
         <div class="barcode">
-            <img src="/static/barcodes/{{ identifier }}.png" alt="Barcode">
+            <img src="{{ url_for('get_barcode', identifier=identifier|urlencode) }}" alt="Barcode">
         </div>
         <h6> -{{ id }}-{{ anmeldedatum }}-{{ vorname }}-{{ id }}-{{ nachname }}-{{age_user}}-{{ category }}-{{ jahrgang }}-{{ ip_address }}-{{ identifier }}-</h6>
         <h4>Mach von dieser Seite einen Screenshot!</h4>

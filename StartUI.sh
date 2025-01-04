@@ -1,4 +1,4 @@
-#!/bin/bash
+12#!/bin/bash
 # Verzeichnis des aktuellen Skripts ermitteln
 SCRIPT_DIR=$(dirname "$(realpath "$0")")
 echo "Wechsle in das Verzeichnis: $SCRIPT_DIR"
