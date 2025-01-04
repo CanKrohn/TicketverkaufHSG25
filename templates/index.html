@@ -17,7 +17,7 @@
 		}
 		h1 {
 			margin-bottom: 20px;
-			color: #000000;
+			color: #00000;
 			cursor: pointer; /* Macht die Überschrift klickbar */
 			text-decoration: underline;
 		}
@@ -94,7 +94,7 @@
 </head>
 <body>
 	<div class="form-container">
-		<h1 onclick="toggleInfo()">Anmeldung für die Schulparty</h1>
+		<h1 onclick="toggleInfo()">Anmeldung für die {{ title }}</h1>
 		<form action="/submit" method="post">
 			<input type="text" name="vorname" placeholder="Vorname" required>
 			<input type="text" name="nachname" placeholder="Nachname" required>
@@ -125,9 +125,9 @@
 			<h3>Die Daten müssen mit deinem Schülerausweis übereinstimmen!</h3>
 			<button type="submit">Abschicken</button>
 		</form>
-		<div id="info-container">
+		<div id="info-container"> 
 			<h3>INFO:</h3>
-			<p>Hier kannst du dich für die nächste Schulparty anmelden. Bitte fülle alle Felder aus und drücke auf "Abschicken". Danach musst du bezahlen und dein Ticket abscannen lassen damit es gültig wird. Jedes Ticket ist nur einmalig nutzbar und nicht übertragbar.</p>
+			<p>{{ description }} Datum: {{ date }}</p>
 		</div>
 	</div>
 

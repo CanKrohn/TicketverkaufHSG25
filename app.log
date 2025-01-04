@@ -118,3 +118,573 @@ Traceback (most recent call last):
            ~~~~~~~~~~~~~~~~~~~^^^^^
 KeyError: 'active_connections'
 2025-01-05 00:29:14,052 - INFO - 127.0.0.1 - - [05/Jan/2025 00:29:14] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:34:24,057 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:34:24] code 400, message Bad request syntax ('*4')
+2025-01-05 00:34:24,057 - INFO - 127.0.0.1 - - [05/Jan/2025 00:34:24] "[31m[1m*4[0m" 400 -
+2025-01-05 00:34:24,058 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:34:24,061 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:34:24,062 - INFO - 127.0.0.1 - - [05/Jan/2025 00:34:24] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:35:53,552 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:35:53] code 400, message Bad request syntax ('*4')
+2025-01-05 00:35:53,552 - INFO - 127.0.0.1 - - [05/Jan/2025 00:35:53] "[31m[1m*4[0m" 400 -
+2025-01-05 00:35:53,553 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:35:53,555 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 262, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:35:53,556 - INFO - 127.0.0.1 - - [05/Jan/2025 00:35:53] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:37:13,406 - DEBUG - Debug message
+2025-01-05 00:37:13,407 - INFO - Info message
+2025-01-05 00:37:13,407 - WARNING - Warning message
+2025-01-05 00:37:13,407 - ERROR - Error message
+2025-01-05 00:37:13,407 - CRITICAL - Critical message
+2025-01-05 00:37:13,415 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:37:13,415 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:37:18,050 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:37:18] code 400, message Bad request syntax ('*4')
+2025-01-05 00:37:18,051 - INFO - 127.0.0.1 - - [05/Jan/2025 00:37:18] "[31m[1m*4[0m" 400 -
+2025-01-05 00:37:18,065 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:37:18,067 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:37:18,068 - INFO - 127.0.0.1 - - [05/Jan/2025 00:37:18] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:40:00,357 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:40:00] code 400, message Bad request syntax ('*4')
+2025-01-05 00:40:00,357 - INFO - 127.0.0.1 - - [05/Jan/2025 00:40:00] "[31m[1m*4[0m" 400 -
+2025-01-05 00:40:00,358 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    def after_request(response):
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:40:00,361 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    def after_request(response):
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 260, in after_request
+    def after_request(response):
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:40:00,363 - INFO - 127.0.0.1 - - [05/Jan/2025 00:40:00] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:42:21,205 - DEBUG - Debug message
+2025-01-05 00:42:21,205 - INFO - Info message
+2025-01-05 00:42:21,205 - WARNING - Warning message
+2025-01-05 00:42:21,205 - ERROR - Error message
+2025-01-05 00:42:21,205 - CRITICAL - Critical message
+2025-01-05 00:42:21,215 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:42:21,215 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:42:31,783 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:42:31] code 400, message Bad request syntax ('*4')
+2025-01-05 00:42:31,783 - INFO - 127.0.0.1 - - [05/Jan/2025 00:42:31] "[31m[1m*4[0m" 400 -
+2025-01-05 00:42:31,796 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:42:31,798 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:42:31,799 - INFO - 192.168.178.59 - - [05/Jan/2025 00:42:31] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:42:31,804 - INFO - 192.168.178.59 - - [05/Jan/2025 00:42:31] "GET /static/images/wallpaper/image.jpeg HTTP/1.1" 200 -
+2025-01-05 00:42:31,812 - INFO - 192.168.178.59 - - [05/Jan/2025 00:42:31] "[33mGET /apple-touch-icon-precomposed.png HTTP/1.1[0m" 404 -
+2025-01-05 00:42:31,818 - INFO - 192.168.178.59 - - [05/Jan/2025 00:42:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-05 00:42:31,820 - INFO - 192.168.178.59 - - [05/Jan/2025 00:42:31] "[33mGET /apple-touch-icon.png HTTP/1.1[0m" 404 -
+2025-01-05 00:43:34,510 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:43:34] code 400, message Bad request syntax ('*4')
+2025-01-05 00:43:34,511 - INFO - 127.0.0.1 - - [05/Jan/2025 00:43:34] "[31m[1m*4[0m" 400 -
+2025-01-05 00:43:34,512 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:43:34,514 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:43:34,515 - INFO - 192.168.178.194 - - [05/Jan/2025 00:43:34] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:43:34,652 - INFO - 192.168.178.194 - - [05/Jan/2025 00:43:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-01-05 00:45:31,809 - DEBUG - Debug message
+2025-01-05 00:45:31,809 - INFO - Info message
+2025-01-05 00:45:31,809 - WARNING - Warning message
+2025-01-05 00:45:31,809 - ERROR - Error message
+2025-01-05 00:45:31,809 - CRITICAL - Critical message
+2025-01-05 00:45:31,817 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:45:31,817 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:45:38,292 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:45:38] code 400, message Bad request syntax ('*4')
+2025-01-05 00:45:38,293 - INFO - 127.0.0.1 - - [05/Jan/2025 00:45:38] "[31m[1m*4[0m" 400 -
+2025-01-05 00:45:38,309 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:45:38,311 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    session['active_connections'] -= 1
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:45:38,312 - INFO - 192.168.178.59 - - [05/Jan/2025 00:45:38] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:48:01,867 - ERROR - 127.0.0.1 - - [05/Jan/2025 00:48:01] code 400, message Bad request syntax ('*4')
+2025-01-05 00:48:01,867 - INFO - 127.0.0.1 - - [05/Jan/2025 00:48:01] "[31m[1m*4[0m" 400 -
+2025-01-05 00:48:01,869 - ERROR - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    print(f"{bcolors.OKBLUE}Zugriffe auf Seite {bcolors.OKPINK}{total_requests}{bcolors.ENDC}")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:48:01,872 - ERROR - Request finalizing failed with an error while handling an error
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 920, in full_dispatch_request
+    return self.finalize_request(rv)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    print(f"{bcolors.OKBLUE}Zugriffe auf Seite {bcolors.OKPINK}{total_requests}{bcolors.ENDC}")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 941, in finalize_request
+    response = self.process_response(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/app.py", line 1319, in process_response
+    response = self.ensure_sync(func)(response)
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/app.py", line 263, in after_request
+    print(f"{bcolors.OKBLUE}Zugriffe auf Seite {bcolors.OKPINK}{total_requests}{bcolors.ENDC}")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/can/Documents/GitHub/TicketverkaufHSG25/venv/lib/python3.13/site-packages/flask/sessions.py", line 86, in __getitem__
+    return super().__getitem__(key)
+           ~~~~~~~~~~~~~~~~~~~^^^^^
+KeyError: 'active_connections'
+2025-01-05 00:48:01,874 - INFO - 192.168.178.59 - - [05/Jan/2025 00:48:01] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-01-05 00:50:57,307 - DEBUG - Debug message
+2025-01-05 00:50:57,307 - INFO - Info message
+2025-01-05 00:50:57,307 - WARNING - Warning message
+2025-01-05 00:50:57,307 - ERROR - Error message
+2025-01-05 00:50:57,307 - CRITICAL - Critical message
+2025-01-05 00:50:57,320 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:50:57,320 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:51:00,560 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:00] "[31m[1mGET / HTTP/1.1[0m" 403 -
+2025-01-05 00:51:01,362 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:01] "[31m[1mGET / HTTP/1.1[0m" 403 -
+2025-01-05 00:51:14,417 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:14] "[31m[1mGET / HTTP/1.1[0m" 403 -
+2025-01-05 00:51:18,854 - DEBUG - Debug message
+2025-01-05 00:51:18,854 - INFO - Info message
+2025-01-05 00:51:18,854 - WARNING - Warning message
+2025-01-05 00:51:18,854 - ERROR - Error message
+2025-01-05 00:51:18,854 - CRITICAL - Critical message
+2025-01-05 00:51:18,860 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:51:18,860 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:51:19,540 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:19] "GET / HTTP/1.1" 200 -
+2025-01-05 00:51:19,554 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:19] "GET /static/images/wallpaper/image.jpeg HTTP/1.1" 200 -
+2025-01-05 00:51:24,572 - INFO - 192.168.178.59 - - [05/Jan/2025 00:51:24] "[35m[1mPOST /submit HTTP/1.1[0m" 500 -
+2025-01-05 00:53:02,968 - DEBUG - Debug message
+2025-01-05 00:53:02,968 - INFO - Info message
+2025-01-05 00:53:02,968 - WARNING - Warning message
+2025-01-05 00:53:02,968 - ERROR - Error message
+2025-01-05 00:53:02,968 - CRITICAL - Critical message
+2025-01-05 00:53:02,977 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:53:02,977 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:53:06,862 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:53:06,872 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "[31m[1mGET /barcodes/001116%253DBkLr7uhcwq.png HTTP/1.1[0m" 403 -
+2025-01-05 00:53:06,873 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:53:06,874 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:53:06,879 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:53:06,898 - INFO - 192.168.178.59 - - [05/Jan/2025 00:53:06] "GET /static/favicon.ico HTTP/1.1" 200 -
+2025-01-05 00:54:23,621 - DEBUG - Debug message
+2025-01-05 00:54:23,621 - INFO - Info message
+2025-01-05 00:54:23,621 - WARNING - Warning message
+2025-01-05 00:54:23,621 - ERROR - Error message
+2025-01-05 00:54:23,621 - CRITICAL - Critical message
+2025-01-05 00:54:23,629 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:54:23,629 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:54:27,904 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:27] "[32mGET /restart HTTP/1.1[0m" 302 -
+2025-01-05 00:54:27,917 - INFO - Zugriffe auf Seite 5
+2025-01-05 00:54:27,921 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:27] "GET / HTTP/1.1" 200 -
+2025-01-05 00:54:27,933 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:27] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:54:34,459 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:34] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:54:34,469 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:34] "[33mGET /static/barcodes/.png HTTP/1.1[0m" 404 -
+2025-01-05 00:54:34,472 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:34] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:54:34,472 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:34] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:54:34,478 - INFO - 192.168.178.59 - - [05/Jan/2025 00:54:34] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:55:00,905 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:00] "[32mGET /restart HTTP/1.1[0m" 302 -
+2025-01-05 00:55:00,920 - INFO - Zugriffe auf Seite 6
+2025-01-05 00:55:00,921 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:00] "GET / HTTP/1.1" 200 -
+2025-01-05 00:55:00,935 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:00] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:55:06,555 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:06] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:55:06,566 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:06] "[33mGET /static/barcodes/.png HTTP/1.1[0m" 404 -
+2025-01-05 00:55:06,567 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:06] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:55:06,569 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:06] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:55:06,574 - INFO - 192.168.178.59 - - [05/Jan/2025 00:55:06] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:56:23,863 - DEBUG - Debug message
+2025-01-05 00:56:23,863 - INFO - Info message
+2025-01-05 00:56:23,863 - WARNING - Warning message
+2025-01-05 00:56:23,863 - ERROR - Error message
+2025-01-05 00:56:23,863 - CRITICAL - Critical message
+2025-01-05 00:56:23,871 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8191
+ * Running on http://192.168.178.59:8191
+2025-01-05 00:56:23,871 - INFO - [33mPress CTRL+C to quit[0m
+2025-01-05 00:56:26,314 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:26] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:56:26,330 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:26] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:56:26,330 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:26] "GET /static/barcodes/0031010=]M_gxFhnWx.png HTTP/1.1" 200 -
+2025-01-05 00:56:26,331 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:26] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:56:26,340 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:26] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:56:37,437 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:37] "[32mGET /restart HTTP/1.1[0m" 302 -
+2025-01-05 00:56:37,455 - INFO - Zugriffe auf Seite 7
+2025-01-05 00:56:37,459 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:37] "GET / HTTP/1.1" 200 -
+2025-01-05 00:56:37,473 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:37] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:56:44,073 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:44] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:56:44,082 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:44] "GET /static/barcodes/004118=]]6NH^C74W.png HTTP/1.1" 200 -
+2025-01-05 00:56:44,083 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:44] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:56:44,085 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:44] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:56:44,089 - INFO - 192.168.178.59 - - [05/Jan/2025 00:56:44] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:56:49,036 - INFO - Zugriffe auf Seite 8
+2025-01-05 00:56:49,038 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:49] "GET / HTTP/1.1" 200 -
+2025-01-05 00:56:49,106 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:49] "GET /static/images/wallpaper/image.jpeg HTTP/1.1" 200 -
+2025-01-05 00:56:58,880 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:58] "POST /submit HTTP/1.1" 200 -
+2025-01-05 00:56:58,916 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:58] "GET /static/barcodes/005168=!dRI5BLB9i.png HTTP/1.1" 200 -
+2025-01-05 00:56:58,926 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:58] "[32mGET /static//images/icons/restart_button.png HTTP/1.1[0m" 308 -
+2025-01-05 00:56:58,927 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:58] "[36mGET /static/images/wallpaper/image.jpeg HTTP/1.1[0m" 304 -
+2025-01-05 00:56:58,952 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:58] "GET /static/images/icons/restart_button.png HTTP/1.1" 200 -
+2025-01-05 00:56:59,008 - INFO - 192.168.178.194 - - [05/Jan/2025 00:56:59] "GET /static/favicon.ico HTTP/1.1" 200 -

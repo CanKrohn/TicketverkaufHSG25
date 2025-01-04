@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bestätigung </title>
+    <title>Bestätigung</title>
     <script type="text/javascript">
         // Funktion, um das Pop-up anzuzeigen
         function showPopup() {
@@ -173,35 +173,28 @@
         }
 
         a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
+            color: #007bff; /* Blau wie ein Link */
+            text-decoration: none; /* Keine Unterstreichung */
         }
-
+        
         a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+            text-decoration: underline; /* Unterstreicht den Link, wenn er überfahren wird */
+        }    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Vielen Dank für Deine Anmeldung!</h1>
+        <h1>Vielen Dank für Deine Anmeldung für die {{ title }} am {{ date }}!</h1>
         <p>{{ vorname }} {{ nachname }} {{ age_user }} Jahre, {{ jahrgang }}. Klasse</p>
         <p>Deine Ticket-Nummer: {{ identifier }}</p>
         <h4>Dein Ticket:</h4>
         <div class="barcode">
-            <img src="{{ url_for('get_barcode', identifier=identifier|urlencode) }}" alt="Barcode">
+            <img src="/static/barcodes/{{ identifier }}.png" alt="Barcode">
         </div>
         <h6> -{{ id }}-{{ anmeldedatum }}-{{ vorname }}-{{ id }}-{{ nachname }}-{{age_user}}-{{ category }}-{{ jahrgang }}-{{ ip_address }}-{{ identifier }}-</h6>
         <h4>Mach von dieser Seite einen Screenshot!</h4>
         <h4> Es ist dein Ticket und der einzige Weg zur Schulparty!</h4>
         <h5>Bei Fragen und Problemen an das GSV-Team wenden</h5>
-        <h5>Solltest du dich vertippt haben oder dein Barcode nicht angezeigt wird, bitte von vorne starten.</h5>
+        <h5>Solltest du dich vertippt haben oder dein Barcode nicht angezeigt wird, bitte von vorne starten und <a href="javascript:void(0);" onclick="showPopup()">Seite neuladen</a>.</h5>
     </div>
 
     <!-- Pop-up Overlay -->

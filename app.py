@@ -35,14 +35,7 @@ app.config.update(
     SESSION_COOKIE_SECURE=True,
 )
 
-# Configure Redis as the storage backend
-redis_client = Redis(host='0.0.0.0', port=8191)
-limiter = Limiter(
-    get_remote_address,
-    app=app,
-    storage_uri="redis://0.0.0.0:8191",
-    default_limits=["20 per day", "10 per hour"]
-)
+
 
 active_connections = 0  # Initialisierung der globalen Zählung
 
@@ -64,16 +57,17 @@ anmeldedatum = datetime.now().strftime('%Y-%m-%d %H:%M:%S:%f')
 current_timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
 
-def is_valid_name(name):
-        # Regex für erlaubte Zeichen
-    if re.match(r"^[a-zA-ZäöüßÄÖÜ\s-]+$", name):
-        return True
-    return False
-
 @app.before_request
 def before_request():
     if 'active_connections' not in session:
         session['active_connections'] = 0
+    session['active_connections'] += 1
+
+@app.after_request
+def after_request(response):
+    if 'active_connections' in session:
+        session['active_connections'] = max(session['active_connections'] - 1, 0)
+    return response
         
 @app.after_request
 def after_request(response):
@@ -117,7 +111,7 @@ def count_registrations_with_ip():
     cursor = conn.cursor()
     
     # SQL-Abfrage, um die Anzahl der Zeilen mit nicht-NULL ip_address zu zählen
-    cursor.execute("SELECT COUNT(*) FROM registrations WHERE ip_address IS NOT NULL")
+    cursor.execute("SELECT COUNT(*) FROM benutzer WHERE ip_address IS NOT NULL")
     result = cursor.fetchone()
     
     # Anzahl der Anmeldungen mit gültiger IP-Adresse
@@ -266,7 +260,7 @@ def after_request(response):
 @app.route('/')
 def index():
     total_requests = increment_request_count()
-    print(f"{bcolors.OKBLUE}Zugriffe auf Seite {bcolors.OKPINK}{total_requests}{bcolors.ENDC}")
+    logging.info(f"Zugriffe auf Seite {total_requests}")
     ip_address = request.remote_addr
     # Überprüfen, ob der User-Agent auf ein mobiles Gerät hinweist
     user_agent = request.user_agent.string.lower()
@@ -276,7 +270,7 @@ def index():
                                ip_address=ip_address)
     else:
         #regulärer Ausdruck zum blockieren von Desktop Zugriff
-    #    return render_template('error.html', error_code=403, error_message="Zugriff verweigert"), 403
+#return render_template('error.html', error_code=403, error_message="Zugriff verweigert"), 403
         
         #vorhande zum testen:
        return render_template('index.html', ip_address=ip_address)
