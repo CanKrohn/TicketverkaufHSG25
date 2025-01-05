@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Tk,ttk,  Label, PhotoImage, messagebox
+from tkinter import ttk,  Label, messagebox, filedialog
 import sqlite3
 from datetime import datetime
 from PIL import Image, ImageTk  # Pillow importieren
@@ -131,22 +131,27 @@ def connect_to_db():
     else:
         # Verbindung herstellen
         try:
-            conn = sqlite3.connect("datenbank.db")
-            cursor = conn.cursor()
-            cursor.execute("PRAGMA foreign_keys = ON;")
-            db_connected = True
-            log_message("Datenbankverbindung erfolgreich hergestellt.", highlight=True)
-            status_label.config(text="Datenbank: Verbunden", fg="green")
-            connect_button.config(text="Verbindung abbrechen")
+            db_file = filedialog.askopenfilename(filetypes=[("SQLite Database Files", "*.db")])
+            if db_file:
+                conn = sqlite3.connect(db_file)
+                cursor = conn.cursor()
+                cursor.execute("PRAGMA foreign_keys = ON;")
+                db_connected = True
+                log_message("Datenbankverbindung erfolgreich hergestellt.", highlight=True)
+                status_label.config(text="Datenbank: Verbunden", fg="green")
+                connect_button.config(text="Verbindung abbrechen")
+            else:
+                log_message("Keine Datenbankdatei ausgewählt.", highlight=True)
         except sqlite3.Error as e:
             log_message(f"Fehler bei der Datenbankverbindung: {e}", highlight=True)
             status_label.config(text="Datenbank: Nicht verbunden", fg="red")
         
+# Example usage of log_message function
 def log_message(message, highlight=False, sql=None, parameters=None, error=None):
-    #Loggt eine Nachricht im Verlauf. Optional: SQL-Fehlerdetails.
-    log_area.config(state="normal")  # Bearbeitbar machen
+    # Log a message in the log area. Optionally: SQL error details.
+    log_area.config(state="normal")  # Make editable
     
-    # Highlight hervorheben
+    # Highlight
     if highlight:
         log_area.insert(tk.END, message + "\n", "highlight")
     else:
@@ -172,7 +177,6 @@ def show_scanned_data(identifier):
         log_message(f"Daten für Identifier '{identifier}' angezeigt.", highlight=True)
     else:
         log_message(f"Keine Daten für Identifier '{identifier}' gefunden.", highlight=True)
-    
 
 # Funktion, um ein Bild zu skalieren und in PhotoImage zu konvertieren
 def load_and_scale_icon(path, size=(100, 100)):
@@ -244,6 +248,7 @@ def process_input(event):
     show_scanned_data(identifier)
     # Eingabefeld leeren
     entry.delete(0, tk.END)
+    entry.focus_set()
     if identifier not in scanned_identifiers:
         scanned_identifiers.add(identifier)
         show_scanned_data(identifier)
@@ -259,11 +264,11 @@ def process_input(event):
             last_scantime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
             # Überprüfen, ob der Identifier existiert
-            cursor.execute("SELECT vorname, nachname, age_user, jahrgang, category, bezahlt FROM benutzer WHERE identifier = ?", (identifier,))
+            cursor.execute("SELECT vorname, nachname, age_user, jahrgang, category FROM benutzer WHERE identifier = ?", (identifier,))
             result = cursor.fetchone()
             
             if result:
-                vorname, nachname, age_user, jahrgang, category, bezahlt = result
+                vorname, nachname, age_user, jahrgang, category = result
                 update_icon("Standard")  # Standard-Icon anzeigen
                 
                 # Kategorie ändern, falls Kontrollkästchen aktiv ist
@@ -417,15 +422,19 @@ menu_bar.add_cascade(label="Optionen", menu=options_menu)
 
 root.config(menu=menu_bar)
 
-# Eingabebereich
-entry_label = tk.Label(root, text="Barcode Scannen:")
-entry_label.pack(pady=10)
+# Example UI elements
+status_label = tk.Label(root, text="Datenbank: Nicht verbunden", fg="red")
+status_label.pack()
+connect_button = tk.Button(root, text="Datenbank verbinden", command=connect_to_db)
+connect_button.pack()
+log_area = tk.Text(root, state="disabled")
+log_area.pack()
 
+# Entry field
 entry = tk.Entry(root, font=("Arial", 14))
 entry.pack(pady=10)
-# Das Eingabefeld wird auf die Funktion process_input gebunden
 entry.bind("<Return>", process_input)
-
+entry.focus_set()  # Set focus to the entry field initially
 
 # Buttons für Aktionen (muss vor dem Checkbutton definiert sein)
 button_frame = tk.Frame(root)
@@ -446,7 +455,6 @@ button_frame.pack(pady=10)
 
 connect_button = tk.Button(button_frame, text="Datenbank verbinden", command=connect_to_db)
 connect_button.pack(side="left", padx=5)
-
 
 # Icons initialisieren und skalieren
 icons = {
