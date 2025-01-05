@@ -203,7 +203,6 @@ def init_db():
     conn = sqlite3.connect('datenbank.db')
     c = conn.cursor()
     c.execute('''
-    
         CREATE TABLE IF NOT EXISTS Benutzer (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             vorname TEXT NOT NULL,
@@ -212,16 +211,11 @@ def init_db():
             jahrgang INTEGER NOT NULL,
             identifier TEXT UNIQUE NOT NULL,
             anmeldedatum DATETIME NOT NULL,
-            bezahlt BOOLEAN NOT NULL DEFAULT 0,
-            scanned INTEGER NOT NULL DEFAULT 0,
             category TEXT NOT NULL DEFAULT 'Gast',
-            last_scantime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             ip_address TEXT NOT NULL
         );
-
-
-        
-    ''')   
+    ''')
+    
     c.execute('''
         CREATE TABLE IF NOT EXISTS PayState_scanned (
             identifier TEXT UNIQUE NOT NULL,
@@ -230,7 +224,9 @@ def init_db():
             age_user INTEGER NOT NULL,
             jahrgang INTEGER NOT NULL,
             category TEXT NOT NULL,
-            bezahlt BOOLEAN NOT NULL DEFAULT 0
+            bezahlt BOOLEAN NOT NULL DEFAULT 0,
+            scanned INTEGER NOT NULL DEFAULT 0,
+            last_scantime DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         );  
     ''')
     
@@ -355,8 +351,8 @@ def submit():
             
             # Neuen Benutzer erstellen
             identifier = generate_user_id(registration_number, int(age_user), int(jahrgang))
-            c.execute("INSERT INTO benutzer (vorname, nachname, age_user, jahrgang, identifier, ip_address, anmeldedatum, category, last_scantime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-                                (vorname, nachname, int(age_user), int(jahrgang), identifier, ip_address, current_timestamp, "Gast", current_timestamp),)
+            c.execute("INSERT INTO benutzer (vorname, nachname, age_user, jahrgang, identifier, ip_address, anmeldedatum, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
+                                (vorname, nachname, int(age_user), int(jahrgang), identifier, ip_address, current_timestamp, "Gast"),)
             
             # Neu erstellten Benutzer abrufen
             c.execute("SELECT * FROM benutzer WHERE identifier = ?", (identifier,))
