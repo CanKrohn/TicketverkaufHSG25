@@ -34,7 +34,7 @@ While designed for school parties, it can be repurposed for other events as it p
 1. Clone the repository:
 
 	```bash
-	git clone https://github.com/your-username/Ticketverkauf.git
+	git clone https://github.com/CanKrohn/Ticketverkauf.git
 	cd Ticketverkauf
 	```
 
